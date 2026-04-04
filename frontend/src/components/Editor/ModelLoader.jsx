@@ -1,104 +1,86 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 export default function ModelLoader({ onModelLoad }) {
-  const inputFile = useRef(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [uploadError, setUploadError] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState('');
 
-  const handleFileSelect = async (event) => {
-    const selectedFile = event.target.files?.[0];
+  // Когда пользователь выбирает файл
+  const handleFileSelect = async (e) => {
+    const selectedFile = e.target.files[0];
     if (!selectedFile) return;
 
-    setIsLoading(true);
-    setUploadError(null); 
+    console.log("Начинаю отправку файла:", selectedFile.name);
 
-    const dataToSend = new FormData();
-    dataToSend.append('file', selectedFile);
+    setIsUploading(true);
+    setUploadError('');
+
+    const formData = new FormData();
+    formData.append('file', selectedFile);
 
     try {
-      console.log('Начинаю отправку файла:', selectedFile.name); // для отладки
+      const token = localStorage.getItem('token');
+      console.log("Токен из localStorage:", token ? "есть" : "отсутствует");
 
-      const res = await fetch('http://localhost:8000/upload-model', {
+      const response = await fetch('http://localhost:8000/upload-model', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token') || ''}`
+          'Authorization': `Bearer ${token}`   // ← Главное исправление
         },
-        body: dataToSend
+        body: formData,
       });
 
-      if (!res.ok) {
-        const errorText = await res.text();
-        throw new Error(`Сервер ответил ${res.status}: ${errorText}`);
+      const result = await response.json();
+
+      if (!response.ok) {
+        console.error("Сервер ответил ошибкой:", result);
+        throw new Error(result.detail || "Не удалось загрузить модель");
       }
 
-      const result = await res.json();
-      
-      if (result.url) {
+      console.log("Модель успешно загружена, URL:", result.url);
+
+      // Передаём URL модели наверх (в EditorPage)
+      if (onModelLoad) {
         onModelLoad(result.url);
-      } else {
-        throw new Error('В ответе нет поля url');
       }
 
     } catch (err) {
-      console.error('Проблема при загрузке модели:', err);
-      setUploadError(err.message || 'Что-то пошло не так...');
+      console.error("Проблема при загрузке модели:", err);
+      setUploadError(err.message || "Что-то пошло не так при загрузке");
     } finally {
-      setIsLoading(false);
+      setIsUploading(false);
     }
   };
 
   return (
-    <div style={{ margin: '0 0 24px 0' }}>
+    <div>
       <input
         type="file"
-        accept=".gltf,.glb,.obj,.fbx"
-        ref={inputFile}
+        accept=".glb,.gltf,.obj,.fbx"
         onChange={handleFileSelect}
+        disabled={isUploading}
         style={{ display: 'none' }}
+        id="model-upload"
       />
 
-      <button
-        type="button"
-        onClick={() => inputFile.current?.click()}
-        disabled={isLoading}
+      <label
+        htmlFor="model-upload"
         style={{
-          padding: '14px 28px',
-          backgroundColor: isLoading ? '#6b7280' : '#1d4ed8',
+          display: 'inline-block',
+          padding: '12px 24px',
+          background: isUploading ? '#4b5563' : '#1e40af',
           color: 'white',
-          border: 'none',
-          borderRadius: '10px',
-          cursor: isLoading ? 'not-allowed' : 'pointer',
-          fontSize: '1.05rem',
-          width: '100%',
-          transition: 'background-color 0.25s ease',
-          boxShadow: '0 2px 6px rgba(0,0,0,0.15)'
+          borderRadius: '8px',
+          cursor: isUploading ? 'not-allowed' : 'pointer',
+          fontSize: '1rem',
+          fontWeight: '500'
         }}
       >
-        {isLoading ? 'Идёт загрузка...' : 'Выбрать и загрузить модель'}
-      </button>
+        {isUploading ? 'Загружаю...' : 'Загрузить модель (glTF, OBJ, FBX)'}
+      </label>
 
       {uploadError && (
-        <div style={{
-          marginTop: '14px',
-          color: '#ef4444',
-          fontSize: '0.92rem',
-          padding: '8px 12px',
-          background: 'rgba(239, 68, 68, 0.1)',
-          borderRadius: '6px'
-        }}>
-          ⚠️ {uploadError}
-        </div>
-      )}
-
-      {/* мп  */}
-      {!isLoading && !uploadError && (
-        <p style={{
-          marginTop: '10px',
-          fontSize: '0.85rem',
-          color: '#9ca3af',
-          textAlign: 'center'
-        }}>
-          Поддерживаются: .glb .gltf .obj .fbx
+        <p style={{ color: '#ff6b6b', marginTop: '10px', fontSize: '0.95rem' }}>
+          {uploadError}
         </p>
       )}
     </div>

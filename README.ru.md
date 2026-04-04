@@ -21,8 +21,6 @@
 
 StellarView 3D — это полнофункциональное веб-приложение, позволяющее загружать, просматривать и редактировать собственные 3D-модели прямо в браузере без установки дополнительного ПО.
 
-Проект выполнен в рамках выпускной квалификационной работы (ВКР) 2026 года по специальности **09.03.02 Информационные системы и технологии**.
-
 Основные цели:
 - Создать простой и удобный инструмент для студентов, дизайнеров и разработчиков
 - Поддержка популярных форматов: glTF/glb, OBJ, FBX
@@ -65,7 +63,7 @@ StellarView 3D — это полнофункциональное веб-прил
 ## Демо
 
 (Если развёрнуто)  
-→ https://stellarview-3d.vercel.app/editor  
+→ https://StellarView-3D.vercel.app/editor  
 
 (Локально)  
 → http://localhost:5173/editor после запуска фронтенда и бэкенда
@@ -81,21 +79,24 @@ StellarView 3D — это полнофункциональное веб-прил
 ### Фронтенд
 
 ```bash
-git clone https://github.com/твой-ник/stellarview-3d-frontend.git
-cd stellarview-3d-frontend
+git clone https://github.com/Felinkos/StellarView-3D
+cd StellarView-3D/frontend
 npm install
 npm run dev
+```
 
 → Открой http://localhost:5173
 
 ### Бэкенд
 
-git clone https://github.com/твой-ник/stellarview-3d-backend.git
-cd stellarview-3d-backend
+```bash
+git clone https://github.com/Felinkos/StellarView-3D
+cd StellarView-3D/backend
 python -m venv venv
 source venv/bin/activate    # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
+```
 
 → Открой http://localhost:8000/docs
 
@@ -111,8 +112,8 @@ uvicorn main:app --reload --port 8000
 Настрой освещение и фон в правой панели
 
 ## Структура Проекта
-
-stellarview-3d/
+```bash
+StellarView-3D/
 ├── frontend/                  # React + Vite
 │   ├── .vite/
 │   ├── node_modules/
@@ -160,12 +161,11 @@ stellarview-3d/
 │   ├── __pycache__/
 │   ├── uploads/models/        # загруженные модели
 │   ├── venv/
-│   ├── .env
 │   └── main.py
 │
 ├── README.md
 └── README.ru.md
-
+```
 ### Вклад в проект
 Приветствуются любые улучшения!
 
@@ -180,8 +180,8 @@ stellarview-3d/
 
 ### Контакты и благодарности
 
-Felinkos — [email@example.com]
-Ссылка на проект: github(???)
+Felinkos — [full.felinkosi@gmail.com]
+Ссылка на проект: https://github.com/Felinkos/StellarView-3D
 
 ### Особая благодарность
 

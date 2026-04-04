@@ -21,8 +21,6 @@
 
 StellarView 3D is a full-stack web application that allows users to upload, view, and interactively edit their own 3D models right in the browser — no software installation required.
 
-It was created as a diploma project (ВКР) in 2026 under the specialty **09.03.02 Information Systems and Technologies**.
-
 Main goals:
 - Provide an intuitive 3D viewer/editor for students, designers, game developers and hobbyists
 - Support popular formats: glTF/glb, OBJ, FBX
@@ -79,21 +77,24 @@ Main goals:
 ### Frontend
 
 ```bash
-git clone https://github.com/yourusername/stellarview-3d-frontend.git
-cd stellarview-3d-frontend
+git clone https://github.com/Felinkos/StellarView-3D
+cd StellarView-3D/frontend
 npm install
 npm run dev
+```
 
 → Open http://localhost:5173
 
 ### Backend
 
-git clone https://github.com/yourusername/stellarview-3d-backend.git
-cd stellarview-3d-backend
+```bash
+git clone https://github.com/Felinkos/StellarView-3D
+cd StellarView-3D/backend
 python -m venv venv
 source venv/bin/activate    # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
+```
 
 → Open http://localhost:8000/docs to see Swagger
 
@@ -110,8 +111,8 @@ Right mouse drag → rotate
 Adjust lighting and background in the right panel
 
 ### Project Structure
-
-stellarview-3d/
+```bash
+StellarView-3D/
 ├── frontend/                  # React + Vite
 │   ├── .vite/
 │   ├── node_modules/
@@ -159,12 +160,11 @@ stellarview-3d/
 │   ├── __pycache__/
 │   ├── uploads/models/        # uploaded files go here
 │   ├── venv/
-│   ├── .env
 │   └── main.py
 │
 ├── README.md
 └── README.ru.md
-
+```
 ### Contributing
 Contributions are welcome!
 
@@ -179,8 +179,8 @@ Distributed under the MIT License.
 
 ### Contact & Acknowledgments
 
-Felinkos — [email@example.com]
-Project Link: github(???)
+Felinkos — [full.felinkosi@gmail.com]
+Project Link: https://github.com/Felinkos/StellarView-3D
 
 ### Special thanks
 
