@@ -1,0 +1,78 @@
+#root {
+  max-width: 1300px; 
+}
+
+/* Логотипы */
+.logo {
+  height: 7em;
+  padding: 1.8em;
+  will-change: filter;
+  transition: filter 0.4s ease; /* плавнее переход */
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2.5em #646cff99);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2.5em #61dafb99);
+}
+
+/* Анимация вращения */
+@keyframes spin-logo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: spin-logo infinite 18s linear;
+  }
+}
+
+/* Карточки */
+.card {
+  padding: 2.2em;
+  background: rgba(30, 40, 70, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  margin: 1.5em auto;
+  max-width: 700px;
+  backdrop-filter: blur(6px);
+}
+
+/* Ссылка на документацию */
+.read-the-docs {
+  color: #88aaff;
+  font-size: 0.95rem;
+  margin-top: 1.5rem;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+}
+
+.read-the-docs:hover {
+  opacity: 1;
+  color: #a0c0ff;
+}
+
+@media (max-width: 768px) {
+  #root {
+    padding: 1.5rem 1rem;
+  }
+  
+  .logo {
+    height: 5.5em;
+    padding: 1.2em;
+  }
+  
+  .card {
+    padding: 1.6em;
+  }
+}
+
+/* Для отладки иногда включаю (потом убираю) */
+/* body { border: 1px solid red; } */

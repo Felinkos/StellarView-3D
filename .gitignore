@@ -1,0 +1,34 @@
+# Environment variables
+.env
+backend/.env
+frontend/.env
+
+# Database
+*.db
+*.sqlite
+users_local.db
+users.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
