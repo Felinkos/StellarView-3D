@@ -9,7 +9,7 @@ export default function ModelLoader({ onModelLoad }) {
     const selectedFile = e.target.files[0];
     if (!selectedFile) return;
 
-    console.log("Начинаю отправку файла:", selectedFile.name);
+    console.log("Отправка файла:", selectedFile.name);
 
     setIsUploading(true);
     setUploadError('');
@@ -75,7 +75,7 @@ export default function ModelLoader({ onModelLoad }) {
           fontWeight: '500'
         }}
       >
-        {isUploading ? 'Загружаю...' : 'Загрузить модель (glTF, OBJ, FBX)'}
+        {isUploading ? 'Загрузка...' : 'Загрузить модель (glTF, OBJ, FBX)'}
       </label>
 
       {uploadError && (
