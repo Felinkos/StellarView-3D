@@ -114,7 +114,7 @@ async def login_user(
         )
 
     token = create_token({"sub": user.username})
-    print(f"Успешный вход — {user.username}")
+    print(f"Успешный вход - {user.username}")
     return {"access_token": token, "token_type": "bearer"}
 
 # ====================== ТЕКУЩИЙ ПОЛЬЗОВАТЕЛЬ ======================

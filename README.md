@@ -19,7 +19,7 @@
 
 ## About the Project
 
-StellarView 3D is a full-stack web application that allows users to upload, view, and interactively edit their own 3D models right in the browser — no software installation required.
+StellarView 3D is a full-stack web application that allows users to upload, view, and interactively edit their own 3D models right in the browser - no software installation required.
 
 Main goals:
 - Provide an intuitive 3D viewer/editor for students, designers, game developers and hobbyists
@@ -27,7 +27,7 @@ Main goals:
 - Real-time mouse controls: drag to move, scroll to zoom, right-drag to rotate
 - Adjustable scene lighting, background color, and model position
 - Secure file upload and storage on the server
-- Google OAuth authentication
+- Authentication: JWT (JSON Web Tokens)
 
 ## Features
 
@@ -37,7 +37,7 @@ Main goals:
 - Custom background color picker
 - Responsive right-side control panel (collapsible)
 - Persistent model storage on backend
-- Google login / registration
+- Login / Registration
 - Beautiful space-themed background with stars and grid
 
 ## Tech Stack
@@ -51,8 +51,9 @@ Main goals:
 **Backend:**
 - FastAPI (Python)
 - Uvicorn
-- File storage (local folder + static serving)
-- Google OAuth 2.0
+- JWT Authentication (name + password)
+- Local file storage (`/uploads`)
+- SQLite database
 - CORS support
 
 **3D:**
@@ -179,7 +180,7 @@ Distributed under the MIT License.
 
 ### Contact & Acknowledgments
 
-Felinkos — [full.felinkosi@gmail.com]
+Felinkos - [full.felinkosi@gmail.com]
 Project Link: https://github.com/Felinkos/StellarView-3D
 
 ### Special thanks

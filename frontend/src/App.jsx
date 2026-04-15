@@ -422,10 +422,10 @@ function App() {
 
     // Таймлайн через цикл
     const timelineSteps = [
-      { day: '1–2d', title: 'Запуск и TLI', desc: 'SLS стартует, выводит Orion на орбиту, затем TLI - гравитационный манёвр на траекторию к Луне.' },
-      { day: '3–5d', title: 'Coast к Луне', desc: 'Свободный полёт, проверка систем Orion.' },
+      { day: '1-2d', title: 'Запуск и TLI', desc: 'SLS стартует, выводит Orion на орбиту, затем TLI - гравитационный манёвр на траекторию к Луне.' },
+      { day: '3-5d', title: 'Coast к Луне', desc: 'Свободный полёт, проверка систем Orion.' },
       { day: '6d', title: 'Облёт Луны (Flyby)', desc: 'Пролёт на ~100 км, retrograde гравитационный манёвр для возврата.' },
-      { day: '7–9d', title: 'TEI и Coast назад', desc: 'Trans-Earth Injection - манёвр на траекторию к Земле.' },
+      { day: '7-9d', title: 'TEI и Coast назад', desc: 'Trans-Earth Injection - манёвр на траекторию к Земле.' },
       { day: '10d', title: 'Возвращение', desc: 'Вход в атмосферу, посадка в океан.' }
     ];
     let timelineBlocks = [];
